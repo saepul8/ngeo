@@ -38,7 +38,10 @@ jobs:
       - run: ls -al
       - run: buildtools/set-version
 
+      - run: npm token||true
       - run: echo "//registry.npmjs.org/:_authToken=$(gopass gs/ci/npm/token)" > ~/.npmrc
+      - run: npm token
+      - run: exit 78
 
       # Lint
       - run: make lint
